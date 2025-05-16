@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control y Monitorización del Robot</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-blue-600 p-4 text-white text-center">
+        <h1 class="text-2xl font-bold">Sistema de Control y Monitorización</h1>
+    </header>
+    <main class="container mx-auto my-8">
+        <!-- Sección de Control Remoto -->
+        <section class="bg-white p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-xl font-semibold mb-4">Control Remoto</h2>
+            <div class="flex justify-around">
+                <button id="startBtn" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Iniciar</button>
+                <button id="stopBtn" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Detener</button>
+            </div>
+            <div class="mt-4">
+                <label for="testMode" class="mr-2">Modo Prueba de Funcionamiento</label>
+                <input type="checkbox" id="testMode" class="w-4 h-4">
+            </div>
+        </section>
+
+        <!-- Sección de Monitorización -->
+        <section class="bg-white p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-xl font-semibold mb-4">Monitorización</h2>
+            <div>
+                <p>Productos Paletizados: <span id="palletizedCount">0</span></p>
+                <p>Productos Desechados: <span id="rejectedCount">0</span></p>
+            </div>
+        </section>
+
+        <!-- Sección de Base de Datos -->
+        <section class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4">Gestión de Datos</h2>
+            <p>Base de Datos: PostgreSQL</p>
+            <pre class="bg-gray-200 p-4 rounded">
+sudo docker run --name niryo-postgres -e POSTGRES_USER=niryouser -e POSTGRES_PASSWORD=user2025 -e POSTGRES_DB=niryodb -p 5432:5432 -d postgres:latest
+            </pre>
+            <p class="mt-2">Cambiar a MySQL si es necesario:</p>
+            <pre class="bg-gray-200 p-4 rounded">
+sudo docker run --name niryo-mysql -e MYSQL_ROOT_PASSWORD=user2025 -e MYSQL_DATABASE=niryodb -e MYSQL_USER=niryouser -e MYSQL_PASSWORD=user2025 -p 3306:3306 -d mysql:latest
+            </pre>
+        </section>
+    </main>
+    <footer class="bg-gray-800 text-white text-center p-4">
+        <p>&copy; 2025 Sistema Automatizado</p>
+    </footer>
+    <script>
+        document.getElementById('startBtn').addEventListener('click', () => {
+            alert('Proceso iniciado.');
+        });
+
+        document.getElementById('stopBtn').addEventListener('click', () => {
+            alert('Proceso detenido.');
+        });
+
+        document.getElementById('testMode').addEventListener('change', (event) => {
+            if (event.target.checked) {
+                alert('Modo prueba activado.');
+            } else {
+                alert('Modo prueba desactivado.');
+            }
+        });
+    </script>
+</body>
+</html>
